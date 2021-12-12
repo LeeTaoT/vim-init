@@ -21,3 +21,13 @@ filetype plugin on
 
 " 让配置变更立即生效
 autocmd BufWritePost $MYVIMRC source $MYVIMRC 
+
+" 禁用vi模式
+set nocompatible
+
+" 自动缩进
+set autoindent
+
+" 打开C/C++语言缩进
+set cindent
+
