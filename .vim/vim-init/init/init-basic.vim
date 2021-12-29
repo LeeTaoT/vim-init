@@ -15,7 +15,7 @@ if has('multi_byte')
 	"文件默认编码
 	set fileencoding=utf-8
 	"打开文件自动尝试下面顺序的编码
-	set fileencoding=ucs-bom,utf-8,gbk,gb18030,big5,gb2312
+	"set fileencoding=ucs-bom,utf-8,gbk,gb18030,big5,gb2312
 endif
 
 "允许vim自带脚本根据文件类型自动设置缩进等
@@ -47,6 +47,15 @@ if has('syntax')
 	syntax enable
 	syntax on
 endif
+
+"显示光标位置
+set ruler
+
+"显示匹配括号
+set showmatch
+
+"显示最后一行
+set display=lastline
 
 " 让配置变更立即生效
 autocmd BufWritePost $MYVIMRC source $MYVIMRC 
