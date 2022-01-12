@@ -1,5 +1,6 @@
 # vimrc
 这个是一个更新的vim配置
+
 vimrc中只需要下面一句话就可以
 ```shell
 source ~/.vim/vim-init/init.vim
