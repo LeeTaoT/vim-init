@@ -1,0 +1,39 @@
+" 基础设置============================================
+
+" 设置行号
+set nu
+
+" 设置搜索高亮
+set hlsearch
+
+" 设置table键缩进
+set ts=4
+
+" 设置语法高亮度
+syntax enable
+
+
+
+" 设置leader键
+let mapleader='<Space>'
+
+
+" 设置按键映射============================================
+
+" 使用ctrl-w 进行保存
+inoremap <C-w> <Esc>:w<cr>i
+noremap <C-w> <Esc>:w<cr>
+
+" 使用ctrl+h/j/k/l 切换窗口
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+" 插件加载与设置==========================================
+
+
+
+
+
+" 自定义命令设置==========================================
