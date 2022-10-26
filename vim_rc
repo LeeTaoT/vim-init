@@ -1,3 +1,4 @@
+
 " 基础设置============================================
 
 " 设置行号
@@ -12,10 +13,13 @@ set ts=4
 " 设置语法高亮度
 syntax enable
 
+" 设置c语言缩进
+set cindent
+
 
 
 " 设置leader键
-let mapleader='<Space>'
+let mapleader="\<space>"
 
 
 " 设置按键映射============================================
@@ -30,10 +34,31 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
-" 插件加载与设置==========================================
 
+" 插件加载==========================================
+call plug#begin('~/.vim/plugged')
 
+" 安装startify插件,显示最近打开文件
+Plug 'mhinz/vim-startify'
 
+" 安装目录管理插件
+Plug 'preservim/nerdtree'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+" 美化状态栏
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" 安装缩进线
+Plug 'Yggdroot/indentLine'
+
+call plug#end()
+
+" 插件设置===============================================
+
+" nerdtree
+nnoremap <leader>t :NERDTreeToggle<cr>
+nnoremap <leader>f :NERDTreeFind<cr>
 
 
 " 自定义命令设置==========================================
