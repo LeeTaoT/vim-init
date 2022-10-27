@@ -41,9 +41,10 @@ call plug#begin('~/.vim/plugged')
 " 安装startify插件,显示最近打开文件
 Plug 'mhinz/vim-startify'
 
-" 安装目录管理插件
+" 安装目录管理插件, 模糊搜索CtrlP
 Plug 'preservim/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " 美化状态栏
 Plug 'vim-airline/vim-airline'
@@ -56,9 +57,15 @@ call plug#end()
 
 " 插件设置===============================================
 
-" nerdtree
-nnoremap <leader>t :NERDTreeToggle<cr>
-nnoremap <leader>f :NERDTreeFind<cr>
+" nerdtree 绑定快捷键
+noremap <leader>t :NERDTreeToggle<cr>
+noremap <leader>f :NERDTreeFind<cr>
+" 打开vim自动进入目录树
+autocmd VimEnter * NERDTree | wincmd p
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
+" ctrl-p 绑定快捷键
+let g:ctrlp_map = '<c-p>'
 
 " 自定义命令设置==========================================
