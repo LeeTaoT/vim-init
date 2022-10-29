@@ -5,21 +5,27 @@
 set nu
 
 " 设置搜索高亮
-set hlsearch
+" set hlsearch
 
 " 设置table键缩进
 set ts=4
 
 " 设置语法高亮度
 syntax enable
+syntax on
 
 " 设置c语言缩进
 set cindent
 
 
-
 " 设置leader键
 let mapleader="\<space>"
+
+" 设置grepprg参数,default=grep -n $* /dev/null
+" 可以参考:h 'grepprg'
+" 执行去除.git,.svn 目录,执行时可以加上--include=*.c 指定类型
+set grepprg=grep\ -rn\ --exclude-dir=*.{git,svn,o,out,hg,project,swp}\ --include=*.{c,cpp,cc,h}\ $*
+
 
 
 " 设置按键映射============================================
@@ -34,6 +40,10 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
+
+" 设置F10 打开/关闭QuickFix 窗口
+" 将vim-init中的asyncrun.vim 拷贝到autoload目录中
+nnoremap <F10> :call asyncrun#quickfix_toggle(10)<cr>
 
 " 插件加载==========================================
 call plug#begin('~/.vim/plugged')
@@ -58,14 +68,17 @@ call plug#end()
 " 插件设置===============================================
 
 " nerdtree 绑定快捷键
-noremap <leader>t :NERDTreeToggle<cr>
-noremap <leader>f :NERDTreeFind<cr>
+noremap <leader>nn :NERDTreeToggle<cr>
+noremap <leader>nf :NERDTreeFind<cr>
 " 打开vim自动进入目录树
-autocmd VimEnter * NERDTree | wincmd p
+" autocmd VimEnter * NERDTree | wincmd p
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " ctrl-p 绑定快捷键
 let g:ctrlp_map = '<c-p>'
+
+" startify 设置session保存位置
+let g:startify_session_dir = '~/.vim/session'
 
 " 自定义命令设置==========================================
