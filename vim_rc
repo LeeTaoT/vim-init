@@ -44,6 +44,7 @@ noremap <C-l> <C-w>l
 " 设置F10 打开/关闭QuickFix 窗口
 " 将vim-init中的asyncrun.vim 拷贝到autoload目录中
 nnoremap <F10> :call asyncrun#quickfix_toggle(10)<cr>
+nmap <F8> :TagbarToggle<CR>
 
 " 插件加载==========================================
 call plug#begin('~/.vim/plugged')
@@ -51,10 +52,28 @@ call plug#begin('~/.vim/plugged')
 " 安装startify插件,显示最近打开文件
 Plug 'mhinz/vim-startify'
 
+" easymotion 快速移动插件
+Plug 'easymotion/vim-easymotion'
+
 " 安装目录管理插件, 模糊搜索CtrlP
 Plug 'preservim/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ctrlpvim/ctrlp.vim'
+" 安装fzf.vim依赖fzf命令确保自己已经安装了
+" 使用Ag命令同时也需要安装 sudo apt-get install silversearcher-ag
+" 或者使用ack.vim 参考https://github.com/ggreer/the_silver_searcher
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" 代码大纲tagbar
+Plug 'preservim/tagbar'
+
+" 补全类插件----------------------------------------------------
+" 轻量级补全字典补全
+Plug 'skywind3000/vim-dict'
+
+" 括号自动补全
+Plug 'Raimondi/delimitMate'
 
 " 美化状态栏
 Plug 'vim-airline/vim-airline'
@@ -80,5 +99,12 @@ let g:ctrlp_map = '<c-p>'
 
 " startify 设置session保存位置
 let g:startify_session_dir = '~/.vim/session'
+
+" easymotion 插件设置
+map <leader>ss <Plug>(easymotion-s2)
+
+" vim-dict 补全设置
+let g:vim_dict_config = {'text' : ' '}
+
 
 " 自定义命令设置==========================================
