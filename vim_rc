@@ -142,6 +142,9 @@ let g:ctrlp_map = '<c-p>'
 
 " startify 设置session保存位置
 let g:startify_session_dir = '~/.vim/session'
+nnoremap <leader>ss :SSave<cr>
+nnoremap <leader>sc :SClose<cr>
+
 
 " easymotion 插件设置
 map <leader>em <Plug>(easymotion-s2)
