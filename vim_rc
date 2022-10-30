@@ -28,7 +28,9 @@ let mapleader="\<space>"
 " 执行去除.git,.svn 目录,执行时可以加上--include=*.c 指定类型
 set grepprg=grep\ -rn\ --exclude-dir=*.{root,git,svn,o,hg,project,swp,tags}\ --include=*.{c,cpp,cc,h}\ $*
 
-
+" 修正补全目录的色彩：默认太难看
+hi! Pmenu guibg=gray guifg=black ctermbg=gray ctermfg=black
+hi! PmenuSel guibg=gray guifg=brown ctermbg=brown ctermfg=gray
 
 " 设置按键映射============================================
 
