@@ -34,9 +34,8 @@ hi! PmenuSel guibg=gray guifg=brown ctermbg=brown ctermfg=gray
 
 " 设置按键映射============================================
 
-" 使用ctrl-w 进行保存
+" inster使用ctrl-w 进行保存
 inoremap <C-w> <Esc>:w<cr>
-noremap <C-w> <Esc>:w<cr>
 noremap <leader>c :close<cr>
 
 " 使用ctrl+h/j/k/l 切换窗口
@@ -131,7 +130,7 @@ call plug#end()
 " 插件设置===============================================
 
 " nerdtree 绑定快捷键
-noremap <leader>nn :NERDTreeToggle<cr>
+noremap <leader>nt :NERDTreeToggle<cr>
 noremap <leader>nf :NERDTreeFind<cr>
 " 打开vim自动进入目录树
 " autocmd VimEnter * NERDTree | wincmd p
@@ -145,7 +144,7 @@ let g:ctrlp_map = '<c-p>'
 let g:startify_session_dir = '~/.vim/session'
 
 " easymotion 插件设置
-map <leader>f <Plug>(easymotion-s2)
+map <leader>em <Plug>(easymotion-s2)
 
 " ctags 相关设置=========================================
 
