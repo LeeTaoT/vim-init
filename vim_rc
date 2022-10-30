@@ -26,7 +26,7 @@ let mapleader="\<space>"
 " 设置grepprg参数,default=grep -n $* /dev/null
 " 可以参考:h 'grepprg'
 " 执行去除.git,.svn 目录,执行时可以加上--include=*.c 指定类型
-set grepprg=grep\ -rn\ --exclude-dir=*.{git,svn,o,hg,project,swp}\ --include=*.{c,cpp,cc,h}\ $*
+set grepprg=grep\ -rn\ --exclude-dir=*.{root,git,svn,o,hg,project,swp,tags}\ --include=*.{c,cpp,cc,h}\ $*
 
 
 
@@ -73,20 +73,40 @@ Plug 'preservim/tagbar'
 
 " 补全类插件------
 " 轻量级补全字典补全
-" Plug 'skywind3000/vim-dict'
-" vim-dict 补全设置
-" let g:vim_dict_config = {'text' : ' '}
+Plug 'skywind3000/vim-auto-popmenu'
+let g:apc_enable_ft = {'*':1}
+" set cpt=.,k,w,b
+set completeopt=menu,menuone,noselect
+set shortmess+=c
+
+Plug 'skywind3000/vim-dict'
 
 " deoplete 补全, 需要python3支持, :echo has("python3")
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
-set completeopt-=preview
+"if has('nvim')
+"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"else
+"  Plug 'Shougo/deoplete.nvim'
+"  Plug 'roxma/nvim-yarp'
+"  Plug 'roxma/vim-hug-neovim-rpc'
+"endif
+"let g:deoplete#enable_at_startup = 1
+"set completeopt-=preview
+
+" 自动生成tags文件，异步更新
+Plug 'ludovicchabant/vim-gutentags'
+" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+" 所生成的数据文件的名称
+let g:gutentags_ctags_tagfile = '.tags'
+" 配置 ctags 的参数
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+" let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+" let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
+
+" vim-preview
+Plug 'skywind3000/vim-preview'
+
 
 " 括号自动补全
 Plug 'Raimondi/delimitMate'
@@ -124,6 +144,11 @@ let g:startify_session_dir = '~/.vim/session'
 
 " easymotion 插件设置
 map <leader>f <Plug>(easymotion-s2)
+
+" ctags 相关设置=========================================
+
+" 向上查找.tags文件
+set tags=./.tags;,.tags
 
 
 " 自定义命令设置==========================================
